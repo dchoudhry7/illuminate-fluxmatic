@@ -37,30 +37,3 @@ A production-ready, minimalistic lighting consultation chatbot utilizing:
     *   **`app.py`**: Queries the Chroma vector database to retrieve grounding documents, constructing structured context before asking the Groq Llama 3.1 LLM.
 4.  **Typewriter Response Streaming**:
     *   Simulates word-by-word streaming responses (`time.sleep(0.03)`) for a premium user interaction.
-
----
-
-## ⚙️ Installation & Usage
-
-### 1. Configure Credentials
-Create a `.env` file in the root directory:
-```env
-GROQ_API_KEY="your_groq_api_key"
-```
-
-### 2. Install Dependencies
-```bash
-pip install -r requirements.txt
-```
-
-### 3. Ingest PDF Catalogs
-Drop your PDF catalogues into the `uploads/` directory, and run the indexer:
-```bash
-python ingest.py
-```
-
-### 4. Run the Chatbot
-Launch the Streamlit server:
-```bash
-streamlit run app.py
-```
