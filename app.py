@@ -10,6 +10,7 @@ except ImportError:
     pass
 
 import streamlit as st
+import streamlit.components.v1 as components
 import pypdf
 from dotenv import load_dotenv
 from langchain_groq import ChatGroq
@@ -40,6 +41,12 @@ st.markdown(
             color: inherit !important;
         }
     </style>
+    """,
+    unsafe_allow_html=True
+)
+
+components.html(
+    """
     <script>
         var forceSelfTarget = function() {
             var links = window.parent.document.querySelectorAll('h1 a');
@@ -49,10 +56,11 @@ st.markdown(
                 }
             }
         };
-        setInterval(forceSelfTarget, 200);
+        setInterval(forceSelfTarget, 100);
     </script>
     """,
-    unsafe_allow_html=True
+    height=0,
+    width=0
 )
 
 @st.cache_resource
