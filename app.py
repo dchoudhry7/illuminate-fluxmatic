@@ -32,6 +32,29 @@ st.set_page_config(
     initial_sidebar_state="collapsed"
 )
 
+st.markdown(
+    """
+    <style>
+        h1 a {
+            text-decoration: none !important;
+            color: inherit !important;
+        }
+    </style>
+    <script>
+        var forceSelfTarget = function() {
+            var links = window.parent.document.querySelectorAll('h1 a');
+            for (var i = 0; i < links.length; i++) {
+                if (links[i].getAttribute('target') !== '_self') {
+                    links[i].setAttribute('target', '_self');
+                }
+            }
+        };
+        setInterval(forceSelfTarget, 200);
+    </script>
+    """,
+    unsafe_allow_html=True
+)
+
 @st.cache_resource
 def get_db_and_llm():
     try:
@@ -109,18 +132,7 @@ def render_chat_message(role, text):
 overview_mode = st.query_params.get("overview", "false") == "true"
 
 if overview_mode:
-    st.markdown('<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">', unsafe_allow_html=True)
-    st.markdown(
-        """
-        <div style="text-align: left; margin-bottom: 5px;">
-            <a href="/?overview=false" target="_self" style="text-decoration: none; color: inherit; display: inline-flex; align-items: center; justify-content: flex-start; gap: 10px;">
-                <span class="material-icons" style="font-size: 38px; color: #794402; vertical-align: middle;">lightbulb</span>
-                <span style="font-size: 38px; font-weight: 700; font-family: 'Inter', sans-serif; vertical-align: middle;">illuminate</span>
-            </a>
-        </div>
-        """,
-        unsafe_allow_html=True
-    )
+    st.markdown("# [:material/lightbulb: illuminate](/?overview=false)")
     st.caption("Fluxmatic Architectural Lighting Consultant")
     st.write("---")
     
@@ -167,18 +179,7 @@ if overview_mode:
         st.rerun()
 
 else:
-    st.markdown('<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">', unsafe_allow_html=True)
-    st.markdown(
-        """
-        <div style="text-align: left; margin-bottom: 5px;">
-            <a href="/?overview=true" target="_self" style="text-decoration: none; color: inherit; display: inline-flex; align-items: center; justify-content: flex-start; gap: 10px;">
-                <span class="material-icons" style="font-size: 38px; color: #794402; vertical-align: middle;">lightbulb</span>
-                <span style="font-size: 38px; font-weight: 700; font-family: 'Inter', sans-serif; vertical-align: middle;">illuminate</span>
-            </a>
-        </div>
-        """,
-        unsafe_allow_html=True
-    )
+    st.markdown("# [:material/lightbulb: illuminate](/?overview=true)")
     st.caption("Fluxmatic Architectural Lighting Consultant")
     st.write("---")
     
