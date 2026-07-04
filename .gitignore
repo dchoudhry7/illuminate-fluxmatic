@@ -1,0 +1,9 @@
+# Local environment variables
+.env
+
+# Python caching
+__pycache__/
+*.pyc
+
+# Local vector database
+chroma_db/
